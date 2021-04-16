@@ -18,23 +18,23 @@ import javax.mail.internet.MimeMultipart;
 import io.javalin.http.Context;
 
 public class EnviarEmail {
-	// Método para enviar e-mail
+	// Metodo para enviar e-mail
 	public static void enviarEmail(String enderecoEmail, String mensagem) throws AddressException, MessagingException {
-		// Configuração do SMTP
+		// Configuracao do SMTP
 		Properties propriedades = new Properties();
 		propriedades.put("mail.smtp.host", "smtp.gmail.com");
         propriedades.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         propriedades.put("mail.smtp.port", "465");
         propriedades.put("mail.smtp.socketFactory.port", "465");
         propriedades.put("mail.smtp.auth", "true");
-        // Autenticação da conta utilizada para mandar o e-mail
+        // Autenticacao da conta utilizada para mandar o e-mail
 		Session sessao = Session.getInstance(propriedades, new Authenticator() {
 		    @Override
 		    protected PasswordAuthentication getPasswordAuthentication() {
 		        return new PasswordAuthentication("sistemabicicleta@gmail.com", "henriquethiago");
 		    }
 		});
-		// Criação e envio do e-mail propriamente dito
+		// Criacao e envio do e-mail propriamente dito
 		Message email = new MimeMessage(sessao);
 		email.setFrom(new InternetAddress("rodriguesoareshenrique@gmail.com"));
 		email.setRecipients(

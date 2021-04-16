@@ -11,13 +11,13 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 public class Principal {
 
-// Criação do servidor e tratamento das requisições
+// Criacao do servidor e tratamento das requisicoes
 	public static void main(String[] args) {
 		Javalin servidor = Javalin.create(configuracao -> {
             configuracao.registerPlugin(configurarOpenApiPlugin());
             configuracao.defaultContentType = "application/json";
         }).start(7001);
-		// requisição para enviar e-mail
+		// requisicao para enviar e-mail
 		servidor.post("/enviarEmail", requisicao -> {
 			try {
 			   EnviarEmail.enviarEmail(requisicao.queryParam("email"), requisicao.queryParam("mensagem"));
@@ -35,7 +35,7 @@ public class Principal {
             
         });
 	}
-	// Configuração do servidor.
+	// Configuracao do servidor.
 	  private static OpenApiPlugin configurarOpenApiPlugin() {
 	        Info info = new Info().version("1.0").description("Bicicletar API");
 	        OpenApiOptions opcoes = new OpenApiOptions(info)
