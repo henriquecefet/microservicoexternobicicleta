@@ -33,5 +33,8 @@
     		
 		</dependency>
     </dependencies>
-  
+  <properties>
+	  <sonar.projectKey>henrique.rodrigues2_microsservico-externo-bicicleta</sonar.projectKey>
+	  <sonar.organization>henrique-rodrigues2</sonar.organization>
+</properties>
 </project>
