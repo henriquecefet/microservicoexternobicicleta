@@ -30,11 +30,26 @@
     		<groupId>javax.mail</groupId>
     		<artifactId>mail</artifactId>
     		<version>1.5.0-b01</version>
-    		
+		</dependency>
+		<dependency>
+    		<groupId>com.squareup.okhttp3</groupId>
+    		<artifactId>okhttp</artifactId>
+    		<version>4.9.1</version>
+		</dependency>
+		<dependency>
+		 <groupId>br.cielo.cieloecommerce</groupId>
+  		<artifactId>api30.sdk</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
 		</dependency>
     </dependencies>
   <properties>
 	  <sonar.projectKey>henrique.rodrigues2_microsservico-externo-bicicleta</sonar.projectKey>
 	  <sonar.organization>henrique-rodrigues2</sonar.organization>
 </properties>
+<repositories>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+</repositories>
 </project>
