@@ -37,11 +37,11 @@
     		<version>4.9.1</version>
 		</dependency>
 		<dependency>
-		 <groupId>br.cielo.cieloecommerce</groupId>
-  		<artifactId>api30.sdk</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+    		<groupId>org.frekele.cielo</groupId>
+    		<artifactId>cielo-ecommerce-client</artifactId>
+    		<version>1.0.0-alpha-7</version>
 		</dependency>
-    </dependencies>
+    	</dependencies>
   <properties>
 	  <sonar.projectKey>henrique.rodrigues2_microsservico-externo-bicicleta</sonar.projectKey>
 	  <sonar.organization>henrique-rodrigues2</sonar.organization>
