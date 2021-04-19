@@ -64,8 +64,6 @@
       <configuration>
         <archive>
           <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
             <mainClass>microsservico_externo_bicicleta.Principal</mainClass>
           </manifest>
         </archive>
