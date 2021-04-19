@@ -19,7 +19,7 @@ public class Principal {
 		Javalin servidor = Javalin.create(configuracao -> {
             configuracao.registerPlugin(configurarOpenApiPlugin());
             configuracao.defaultContentType = "application/json";
-        }).start(Integer.valueOf(System.getenv("PORT"));
+        }).start(Integer.valueOf(System.getenv("PORT")));
 		// requisicao para enviar e-mail
 		servidor.post("/enviarEmail", requisicao -> {
 			try {
