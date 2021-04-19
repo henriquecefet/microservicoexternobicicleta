@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/microsservico_externo_bicicleta-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* microsservico_externo_bicicleta.Principal
