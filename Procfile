@@ -1,1 +1,1 @@
-web: java java $JAVA_OPTS -cp target/classes:target/dependency/* microsservico_externo_bicicleta.Principal
+web: java -jar -Dserver.port=$PORT target/microsservico_externo_bicicleta.war
