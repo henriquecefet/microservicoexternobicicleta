@@ -34,9 +34,9 @@ public class Ciclista {
 	}
 	public static ArrayList<Ciclista> retornarCiclista() throws CartaoNaoEncontrado {
 		ArrayList<Ciclista> ciclistas = new ArrayList<Ciclista>();
-		ciclistas.add(new Ciclista("Henrique Rodrigues", "1", CartaoDeCredito.consultarCartoes("Henrique Rodrigues")));
-		ciclistas.add(new Ciclista("Thiago Parracho", "2", CartaoDeCredito.consultarCartoes("Thiago Parracho")));
-		ciclistas.add(new Ciclista("Barbara Beato", "3", CartaoDeCredito.consultarCartoes("Barbara Beato")));
+		ciclistas.add(new Ciclista("1", "Henrique Rodrigues", CartaoDeCredito.consultarCartoes("Henrique Rodrigues")));
+		ciclistas.add(new Ciclista("2", "Thiago Parracho", CartaoDeCredito.consultarCartoes("Thiago Parracho")));
+		ciclistas.add(new Ciclista("3", "Barbara Beato", CartaoDeCredito.consultarCartoes("Barbara Beato")));
 		return ciclistas;
 	}
 	public static Ciclista consultarCiclista(String id) throws CartaoNaoEncontrado, CiclistaNaoEncontrado{
