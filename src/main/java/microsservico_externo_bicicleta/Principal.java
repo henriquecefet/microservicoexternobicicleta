@@ -96,7 +96,7 @@ public class Principal {
 		    	   requisicao.status(200);
 		       }
 		       else {
-		    	    Erro erro = new Erro("404", "Cartao invalido");
+		    	    Erro erro = new Erro("422", "Cartao invalido");
 					requisicao.status(Integer.parseInt(erro.getCodigo()));
 					requisicao.json(erro);
 		       }

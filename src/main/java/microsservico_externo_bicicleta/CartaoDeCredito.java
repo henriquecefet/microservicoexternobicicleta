@@ -1,6 +1,7 @@
 package microsservico_externo_bicicleta;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CartaoDeCredito {
 	private String nomeTitular;
@@ -81,13 +82,20 @@ public class CartaoDeCredito {
 	}
 	public static boolean validaCartao(CartaoDeCredito cartao) {
 		if(!cartao.getBandeira().equals("Sem bandeira")) {
-			try {
-				Ciclista ciclista = Ciclista.consultarCiclistaPeloNome(cartao.getNomeTitular());
-				Cobranca.realizarCobranca(new Cobranca(ciclista.getId(), 0));
-				return true;
-			}catch(Exception transacaoNaoAutorizada) {
+			int ano = Calendar.getInstance().get(Calendar.YEAR);
+			if(Integer.parseInt(cartao.getValidade().substring(3, cartao.getValidade().length()))>ano) {
+				try {
+					Ciclista ciclista = Ciclista.consultarCiclistaPeloNome(cartao.getNomeTitular());
+					Cobranca.realizarCobranca(new Cobranca(ciclista.getId(), 0));
+					return true;
+				}catch(Exception transacaoNaoAutorizada) {
+					return false;
+				}
+			}
+			else {
 				return false;
 			}
+			
 		}
 		else {
 			return false;
