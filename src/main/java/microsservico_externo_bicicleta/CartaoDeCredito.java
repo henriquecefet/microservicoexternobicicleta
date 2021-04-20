@@ -66,14 +66,13 @@ public class CartaoDeCredito {
 		
 	}
 	public String getBandeira() {
-		System.out.println(this.getNumero().substring(0,1));
-		if(this.getNumero().substring(0,1)=="4") {
+		if(this.getNumero().substring(0,1).equals("4")) {
 			return "Visa";
 		}
-		else if(this.getNumero().substring(0,1)=="5") {
+		else if(this.getNumero().substring(0,1).equals("5")) {
 			return "MasterCard";
 		}
-		else if(this.getNumero().substring(0,2)=="37") {
+		else if(this.getNumero().substring(0,2).equals("37")) {
 			return "AmericanExpress";
 		}
 		else {
