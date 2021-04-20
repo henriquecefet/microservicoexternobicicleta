@@ -85,7 +85,11 @@ public class Principal {
 					requisicao.json(erro);
 		       }
         });
+		servidor.get("/validaCartaoDeCredito", requisicao -> {
+		       
+     });
 	}
+	
 	// Configuracao do servidor.
 	  private static OpenApiPlugin configurarOpenApiPlugin() {
 	        Info info = new Info().version("1.0").description("Bicicleta API");

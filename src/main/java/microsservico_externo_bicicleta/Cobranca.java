@@ -117,9 +117,10 @@ public class Cobranca {
 		Payment payment = sale.payment(cobranca.getValor());
 		payment.creditCard(ciclista.getCartao().getCvv(), "Visa").setExpirationDate(ciclista.getCartao().getValidade())
 		                                 .setCardNumber(ciclista.getCartao().getNumero())
-		                                 .setHolder(ciclista.getNome());
+		                                 .setHolder(ciclista.getCartao().getNomeTitular());
         sale = new CieloEcommerce(merchant, Environment.SANDBOX).createSale(sale);
         String paymentId = sale.getPayment().getPaymentId();
+        System.out.println(paymentId);
         cobranca.setId("5");
         cobranca.setStatus(Status.PAGA);
         cobranca.setHoraFinalizacao(obterDataHora());
