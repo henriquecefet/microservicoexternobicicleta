@@ -66,6 +66,7 @@ public class CartaoDeCredito {
 		
 	}
 	public String getBandeira() {
+		System.out.println(this.getNumero().substring(0,1));
 		if(this.getNumero().substring(0,1)=="4") {
 			return "Visa";
 		}
