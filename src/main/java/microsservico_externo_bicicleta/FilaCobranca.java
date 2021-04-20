@@ -11,7 +11,7 @@ public class FilaCobranca {
 	public static void inserir(Cobranca cobranca) {
 		filaCobranca.add(cobranca);
 	}
-	public static void cobrar() throws CieloRequestException, IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado {
+	public static void cobrar() throws CieloRequestException, IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado, TransacaoNaoAutorizada {
 		Cobranca.realizarCobranca(filaCobranca.remove());
 	}
 }
