@@ -91,8 +91,15 @@ public class Principal {
 					requisicao.json(erro);
 		       }
         });
-		servidor.get("/validaCartaoDeCredito", requisicao -> {
-		       
+		servidor.post("/validaCartaoDeCredito", requisicao -> {
+		       if(CartaoDeCredito.validaCartao(new CartaoDeCredito(requisicao.queryParam("nomeTitular"),requisicao.queryParam("numero"),requisicao.queryParam("validade"),requisicao.queryParam("cvv")))) {
+		    	   requisicao.status(200);
+		       }
+		       else {
+		    	    Erro erro = new Erro("404", "Cartao invalido");
+					requisicao.status(Integer.parseInt(erro.getCodigo()));
+					requisicao.json(erro);
+		       }
      });
 	}
 	

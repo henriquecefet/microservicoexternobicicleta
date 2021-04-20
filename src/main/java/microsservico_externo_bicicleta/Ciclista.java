@@ -14,6 +14,10 @@ public class Ciclista {
 		this.nome = nome;
 		this.cartao = cartao;
 	}
+	public Ciclista(String id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -39,11 +43,27 @@ public class Ciclista {
 		ciclistas.add(new Ciclista("3", "Barbara Beato", CartaoDeCredito.consultarCartoes("Barbara Beato")));
 		return ciclistas;
 	}
-	public static Ciclista consultarCiclista(String id) throws CartaoNaoEncontrado, CiclistaNaoEncontrado{
+	public static Ciclista consultarCiclistaPeloId(String id) throws CartaoNaoEncontrado, CiclistaNaoEncontrado{
 		ArrayList<Ciclista> ciclistas = retornarCiclista();
 		Ciclista ciclista = null;
 		for(int i = 0; i< ciclistas.size(); i++) {
 			if(ciclistas.get(i).getId().equals(id)) {
+				ciclista = ciclistas.get(i);
+				break;
+			}
+		}
+		if(ciclista != null) {
+			return ciclista;
+		}
+		else {
+			throw new CiclistaNaoEncontrado("Ciclista nao encontrado");
+		}
+	}
+	public static Ciclista consultarCiclistaPeloNome(String nome) throws CartaoNaoEncontrado, CiclistaNaoEncontrado{
+		ArrayList<Ciclista> ciclistas = retornarCiclista();
+		Ciclista ciclista = null;
+		for(int i = 0; i< ciclistas.size(); i++) {
+			if(ciclistas.get(i).getNome().equals(nome)) {
 				ciclista = ciclistas.get(i);
 				break;
 			}

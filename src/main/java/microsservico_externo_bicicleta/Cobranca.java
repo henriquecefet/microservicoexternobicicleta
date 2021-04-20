@@ -110,7 +110,7 @@ public class Cobranca {
 		return bancoCobranca;
 	}
 	public static Cobranca realizarCobranca(Cobranca cobranca) throws CieloRequestException,  IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado, TransacaoNaoAutorizada{
-		Ciclista ciclista = Ciclista.consultarCiclista(cobranca.getCiclista());
+		Ciclista ciclista = Ciclista.consultarCiclistaPeloId(cobranca.getCiclista());
 		Merchant merchant = new Merchant(MerchantId, MerchantKey);
 		Sale sale = new Sale(((int)(Math.random()*500))+"");
 		Customer customer = sale.customer(ciclista.getNome());
