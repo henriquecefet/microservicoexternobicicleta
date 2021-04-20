@@ -115,7 +115,7 @@ public class Cobranca {
 		Sale sale = new Sale(((int)(Math.random()*500))+"");
 		Customer customer = sale.customer(ciclista.getNome());
 		Payment payment = sale.payment(cobranca.getValor());
-		payment.creditCard(ciclista.getCartao().getCvv(), "Visa").setExpirationDate(ciclista.getCartao().getValidade())
+		payment.creditCard(ciclista.getCartao().getCvv(), ciclista.getCartao().getBandeira()).setExpirationDate(ciclista.getCartao().getValidade())
 		                                 .setCardNumber(ciclista.getCartao().getNumero())
 		                                 .setHolder(ciclista.getCartao().getNomeTitular());
         sale = new CieloEcommerce(merchant, Environment.SANDBOX).createSale(sale);
