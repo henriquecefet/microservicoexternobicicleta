@@ -109,7 +109,7 @@ public class Cobranca {
 		bancoCobranca.add(new Cobranca("4", Status.CANCELADA, "17-04-2021-13:00", "", 5, "532"));
 		return bancoCobranca;
 	}
-	public static Cobranca realizarCobranca(Cobranca cobranca) throws CieloRequestException,  IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado{
+	public static Cobranca realizarCobranca(Cobranca cobranca) throws CieloRequestException,  IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado, TransacaoNaoAutorizada{
 		Ciclista ciclista = Ciclista.consultarCiclista(cobranca.getCiclista());
 		Merchant merchant = new Merchant(MerchantId, MerchantKey);
 		Sale sale = new Sale(((int)(Math.random()*500))+"");
@@ -120,11 +120,16 @@ public class Cobranca {
 		                                 .setHolder(ciclista.getCartao().getNomeTitular());
         sale = new CieloEcommerce(merchant, Environment.SANDBOX).createSale(sale);
         String paymentId = sale.getPayment().getPaymentId();
-        System.out.println(paymentId);
-        cobranca.setId("5");
-        cobranca.setStatus(Status.PAGA);
-        cobranca.setHoraFinalizacao(obterDataHora());
-        return cobranca;
+        if(sale.getPayment().getReturnMessage().equals("Operation Successful")) {
+            cobranca.setId(((int)(Math.random()*500))+"");
+            cobranca.setStatus(Status.PAGA);
+            cobranca.setHoraFinalizacao(obterDataHora());
+            return cobranca;
+        }
+        else {
+        	throw new TransacaoNaoAutorizada("Dados invalidos");
+        }
+    
  
 	}
 	public static String obterDataHora() {

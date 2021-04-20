@@ -45,6 +45,7 @@ public class Principal {
 			try {
 				Cobranca cobranca = new Cobranca(requisicao.queryParam("ciclista"),Integer.parseInt(requisicao.queryParam("valor")));
 				cobranca = Cobranca.realizarCobranca(cobranca);
+				requisicao.status(200);
 				requisicao.json(cobranca);
 			}catch(CieloRequestException erroRequest) {
 				requisicao.json(erroRequest.getError().getMessage());
@@ -58,6 +59,11 @@ public class Principal {
 			}
 			catch(CartaoNaoEncontrado cartaoNaoEncontado) {
 				Erro erro = new Erro("422", "Dados Invalios.");
+				requisicao.status(Integer.parseInt(erro.getCodigo()));
+				requisicao.json(erro);
+			}
+			catch(TransacaoNaoAutorizada transacaoNaoAutorizada) {
+				Erro erro = new Erro("422", "Transacao Nao Autorizada");
 				requisicao.status(Integer.parseInt(erro.getCodigo()));
 				requisicao.json(erro);
 			}
