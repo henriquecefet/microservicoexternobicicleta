@@ -83,7 +83,7 @@ public class CartaoDeCredito {
 	public static boolean validaCartao(CartaoDeCredito cartao) {
 		if(!cartao.getBandeira().equals("Sem bandeira")) {
 			int ano = Calendar.getInstance().get(Calendar.YEAR);
-			if(Integer.parseInt(cartao.getValidade().substring(3, cartao.getValidade().length()))>ano) {
+			if(Integer.parseInt(cartao.getValidade().substring(3, cartao.getValidade().length()-1))>ano) {
 				try {
 					Ciclista ciclista = Ciclista.consultarCiclistaPeloNome(cartao.getNomeTitular());
 					Cobranca.realizarCobranca(new Cobranca(ciclista.getId(), 0));
