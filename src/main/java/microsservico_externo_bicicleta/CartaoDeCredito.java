@@ -43,9 +43,9 @@ public class CartaoDeCredito {
 	}
 	public static ArrayList<CartaoDeCredito> retornarCartoes() {
 		ArrayList<CartaoDeCredito> cartoes = new ArrayList<CartaoDeCredito>();
-		cartoes.add(new CartaoDeCredito("Henrique Rodrigues", "0000000000000001", "12/2024", "123"));
-		cartoes.add(new CartaoDeCredito("Thiago Parracho", "0000000000000002", "12/2024", "456"));
-		cartoes.add(new CartaoDeCredito("Barbara Beato", "0000000000000003", "12/2024", "789"));
+		cartoes.add(new CartaoDeCredito("Henrique Rodrigues", "4111111145551141", "12/2024", "123"));
+		cartoes.add(new CartaoDeCredito("Thiago Parracho", "4111111145551142", "12/2024", "456"));
+		cartoes.add(new CartaoDeCredito("Barbara Beato", "4111111145551143", "12/2024", "789"));
 		return cartoes;
 	}
 	public static CartaoDeCredito consultarCartoes(String titular) throws CartaoNaoEncontrado{
@@ -62,9 +62,22 @@ public class CartaoDeCredito {
 		}
 		else {
 			throw new CartaoNaoEncontrado("Cartao inexistente");
+		}	
+		
+	}
+	public String getBandeira() {
+		if(this.getNumero().substring(0,1)=="4") {
+			return "Visa";
 		}
-		
-		
+		else if(this.getNumero().substring(0,1)=="5") {
+			return "MasterCard";
+		}
+		else if(this.getNumero().substring(0,2)=="37") {
+			return "AmericanExpress";
+		}
+		else {
+			return "Sem bandeira";
+		}
 	}
 
 }
