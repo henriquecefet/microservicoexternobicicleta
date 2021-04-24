@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Queue;
-
+import java.security.SecureRandom;
 import org.eclipse.jetty.util.ajax.JSON;
 import cieloecommerce.sdk.Merchant;
 import cieloecommerce.sdk.ecommerce.Sale;
@@ -31,7 +31,8 @@ public class Cobranca {
 		
 	}
 	public Cobranca(String ciclista, int valor ) {
-		this.id = ((int)(Math.random()*500))+"";
+		SecureRandom rand = new SecureRandom();
+		this.id = rand.nextInt(1000)+"";
 		this.valor = valor;
 		this.ciclista = ciclista;
 		this.status = Status.PENDENTE;
@@ -112,7 +113,8 @@ public class Cobranca {
 	public static Cobranca realizarCobranca(Cobranca cobranca) throws CieloRequestException,  IOException, CartaoNaoEncontrado, CiclistaNaoEncontrado, TransacaoNaoAutorizada{
 		Ciclista ciclista = Ciclista.consultarCiclistaPeloId(cobranca.getCiclista());
 		Merchant merchant = new Merchant(MerchantId, MerchantKey);
-		Sale sale = new Sale(((int)(Math.random()*500))+"");
+		SecureRandom rand = new SecureRandom();
+		Sale sale = new Sale(rand.nextInt(1000)+"");
 		Customer customer = sale.customer(ciclista.getNome());
 		Payment payment = sale.payment(cobranca.getValor());
 		payment.creditCard(ciclista.getCartao().getCvv(), ciclista.getCartao().getBandeira()).setExpirationDate(ciclista.getCartao().getValidade())
@@ -121,7 +123,7 @@ public class Cobranca {
         sale = new CieloEcommerce(merchant, Environment.SANDBOX).createSale(sale);
         String paymentId = sale.getPayment().getPaymentId();
         if(sale.getPayment().getReturnMessage().equals("Operation Successful")) {
-            cobranca.setId(((int)(Math.random()*500))+"");
+            cobranca.setId(rand.nextInt(1000)+"");
             cobranca.setStatus(Status.PAGA);
             cobranca.setHoraFinalizacao(obterDataHora());
             return cobranca;

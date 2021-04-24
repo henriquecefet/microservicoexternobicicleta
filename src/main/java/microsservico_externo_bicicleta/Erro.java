@@ -1,5 +1,5 @@
 package microsservico_externo_bicicleta;
-
+import java.security.SecureRandom;
 public class Erro {
 	private String id;
 	private String codigo;
@@ -9,7 +9,8 @@ public class Erro {
 			
 	}
 	public Erro(String codigo, String mensagem) {
-		this.id = ((int)(Math.random()*500))+"";
+		SecureRandom rand = new SecureRandom();
+		this.id = rand.nextInt(1000)+"";
 		this.codigo = codigo;
 		this.mensagem = mensagem;
 	}

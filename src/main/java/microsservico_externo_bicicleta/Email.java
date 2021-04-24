@@ -1,4 +1,5 @@
 package microsservico_externo_bicicleta;
+import java.security.SecureRandom;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -22,7 +23,8 @@ public class Email {
 		
 	}
 	public Email(String email, String mensagem) {
-		this.id = ((int)(Math.random()*500))+"";
+		SecureRandom rand = new SecureRandom();
+		this.id = rand.nextInt(1000)+"";
 		this.email = email;
 		this.mensagem = mensagem;
 	}
@@ -49,6 +51,7 @@ public class Email {
 		Properties propriedades = new Properties();
 		propriedades.put("mail.smtp.host", "smtp.gmail.com");
         propriedades.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        propriedades.put("mail.smtp.ssl.checkserveridentity", true);
         propriedades.put("mail.smtp.port", "465");
         propriedades.put("mail.smtp.socketFactory.port", "465");
         propriedades.put("mail.smtp.auth", "true");

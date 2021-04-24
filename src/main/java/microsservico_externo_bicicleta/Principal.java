@@ -28,12 +28,10 @@ public class Principal {
 			    requisicao.json(e_mail);
 			    requisicao.status(200);
 			} catch (AddressException excessaoEndereco) {
-				excessaoEndereco.printStackTrace();
 				Erro erro = new Erro("404", "Email com formato invalido.");
 				requisicao.status(Integer.parseInt(erro.getCodigo()));
 				requisicao.json(erro);
 			} catch (MessagingException excessaoEmail) {
-				excessaoEmail.printStackTrace();
 				Erro erro = new Erro("500", "Email com formato invalido.");
 				requisicao.status(Integer.parseInt(erro.getCodigo()));
 				requisicao.json(erro);
